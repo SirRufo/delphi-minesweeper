@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{282EB1A1-8784-4F88-81A7-236F54103F7D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="VclUI\Minesweeper.VclUI.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Minesweeper_VclUI">
+        <MSBuild Projects="VclUI\Minesweeper.VclUI.dproj"/>
+    </Target>
+    <Target Name="Minesweeper_VclUI:Clean">
+        <MSBuild Projects="VclUI\Minesweeper.VclUI.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Minesweeper_VclUI:Make">
+        <MSBuild Projects="VclUI\Minesweeper.VclUI.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Minesweeper_VclUI"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Minesweeper_VclUI:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Minesweeper_VclUI:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
